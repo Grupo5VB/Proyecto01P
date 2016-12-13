@@ -15,6 +15,14 @@
         Out
     End Enum
 
+    Enum OpMainAdm
+        Invalid
+        Dignidades
+        Candidatos
+        Estadisticas
+        Out
+    End Enum
+
     Sub Main()
 
         Console.Title = "SISTEMA VOTO ELECTRONICO"
@@ -26,7 +34,7 @@
             Try
                 opcion = CByte(op) 'Byte.Parse()
             Catch ex As OverflowException
-                opcion = OpMain.Invalid
+                opcion = OpMainAdm.Invalid
             End Try
 
             'opcion = CByte(op) 'Byte.Parse()
@@ -40,6 +48,7 @@
                     Console.WriteLine("Candidato")
                 Case OpMain.Admin
                     Console.WriteLine("Administrador")
+                    IngresoAdministrador()
                 Case OpMain.Out
                     Console.WriteLine("Cerrando aplicación")
                 Case Else
@@ -50,6 +59,63 @@
         Loop Until opcion = OUT
         Console.WriteLine("GRACIAS, BYE")
         Console.ReadLine()
+
+    End Sub
+
+    Private Sub IngresoAdministrador()
+        Dim usuario As String
+        Dim contraseña As String
+        Console.Clear()
+        Console.WriteLine(vbTab & "INICIAR SESION ADMINISTRADOR " & vbCrLf)
+        Console.Write(" INGRESE SU USUARIO : " & vbTab)
+        usuario = Console.ReadLine()
+        Console.Write(" INGRESE SU PASSWORD : " & vbTab)
+        contraseña = Console.ReadLine()
+        MenuAdministrador()
+
+
+    End Sub
+
+    Private Sub MenuAdministrador()
+        Console.Clear()
+        Console.WriteLine(vbTab & "MENU ADMINISTRADOR " & vbCrLf)
+        Console.WriteLine(vbTab & vbTab & "{0}. ADMINISTRAR DIGNIDADES", LOGIN)
+        Console.WriteLine(vbTab & vbTab & "{0}. ADMINISTRAR CANDIDATOS", SINGIN)
+        Console.WriteLine(vbTab & vbTab & "{0}. ESTADISTICAS", CHPASSWORD)
+        Console.WriteLine(vbTab & vbTab & "{0}. CERRAR SECCION", OUT)
+        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+
+        Do
+            op = Console.ReadLine()
+            Try
+                opcion = CByte(op) 'Byte.Parse()
+            Catch ex As OverflowException
+                opcion = OpMainAdm.Invalid
+            End Try
+
+            'opcion = CByte(op) 'Byte.Parse()
+            Console.WriteLine("Ud ha ingresado: {0}", op)
+
+            Select Case opcion
+                Case OpMainAdm.Dignidades
+                    Console.WriteLine("ADMINISTRAR DIGNIDADES")
+                    MenuAdmDignidades()
+                Case OpMainAdm.Candidatos
+                    Console.WriteLine("ADMINISTRAR CANDIDATOS")
+                    MenuAdmCandidatos()
+                Case OpMainAdm.Estadisticas
+                    Console.WriteLine("ESTADISTICAS")
+                    MenuAdmEstadisticas()
+                Case OpMainAdm.Out
+                    'Console.WriteLine("Volviendo al menu principal")
+                    Console.Clear()
+                    MenuPrincipal()
+                Case Else
+                    Console.WriteLine("**** OPCION INVALIDA: [{0}]", opcion)
+            End Select
+
+            Console.ReadLine()
+        Loop Until opcion = OUT
 
     End Sub
 
@@ -101,5 +167,42 @@
         opcion = Console.ReadLine()
         MenuPrincipal()
     End Sub
+    Sub MenuAdmDignidades()
+        Console.Clear()
+        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
+        Console.WriteLine(vbTab & vbTab & "  ADMINISTAR DIGNIDADES" & vbCrLf)
+        Console.WriteLine("OPCIÓN 1. CREAR" & vbCrLf)
+        Console.WriteLine("OPCIÓN 2. MODIFICAR" & vbCrLf)
+        Console.WriteLine("OPCIÓN 3. CONSULTAR" & vbCrLf)
+        Console.WriteLine("OPCIÓN 4. ELIMINAR" & vbCrLf)
+        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+        opcion = Console.ReadLine()
+        MenuAdministrador()
+    End Sub
+    Sub MenuAdmCandidatos()
+        Console.Clear()
+        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
+        Console.WriteLine(vbTab & vbTab & "  ADMINISTAR DIGNIDADES" & vbCrLf)
+        Console.WriteLine("OPCIÓN 1. CREAR" & vbCrLf)
+        Console.WriteLine("OPCIÓN 2. MODIFICAR" & vbCrLf)
+        Console.WriteLine("OPCIÓN 3. CONSULTAR" & vbCrLf)
+        Console.WriteLine("OPCIÓN 4. ELIMINAR" & vbCrLf)
+        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+        opcion = Console.ReadLine()
+        MenuAdministrador()
+    End Sub
+
+    Sub MenuAdmEstadisticas()
+        Console.Clear()
+        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
+        Console.WriteLine(vbTab & vbTab & "  ADMINISTAR DIGNIDADES" & vbCrLf)
+        Console.WriteLine("OPCIÓN 1. MOSTRAR RESULTADOS" & vbCrLf)
+        Console.WriteLine("OPCIÓN 2. VOTOS POR DIGNIDAD" & vbCrLf)
+        Console.WriteLine("OPCIÓN 3. LISTAR CANDIDATOS" & vbCrLf)
+        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+        opcion = Console.ReadLine()
+        MenuAdministrador()
+    End Sub
+
 
 End Module

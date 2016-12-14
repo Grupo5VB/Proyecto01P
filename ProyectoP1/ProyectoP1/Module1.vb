@@ -15,6 +15,17 @@
         Out
     End Enum
 
+    Enum OpMainCand  'sucesivo o consecutivo
+        Invalid
+        votoDig
+        ListaA
+        ListaB
+        VotoNulo
+        VotoBlanco
+        VotoDignidad
+        Out
+    End Enum
+
     Enum OpMainAdm
         Invalid
         Dignidades
@@ -22,7 +33,6 @@
         Estadisticas
         Out
     End Enum
-
     Sub Main()
 
         Console.Title = "SISTEMA VOTO ELECTRONICO"
@@ -117,6 +127,80 @@
             Console.ReadLine()
         Loop Until opcion = OUT
 
+    End Sub
+
+    Private Sub IngresoCandidato()
+        Dim usuario As String
+        Dim clave As String
+        Console.Clear()
+        Console.WriteLine(vbTab & "INICIAR SESION CANDIDATO " & vbCrLf)
+        Console.Write(" INGRESE SU USUARIO : " & vbTab)
+        usuario = Console.ReadLine()
+        Console.Write(" INGRESE SU PASSWORD : " & vbTab)
+        clave = Console.ReadLine()
+        MenuCandidato()
+    End Sub
+
+    Private Sub MenuCandidato()
+        Console.Clear()
+        Console.WriteLine(vbTab & "MENU CANDIDATO" & vbCrLf)
+        Console.WriteLine(vbTab & vbTab & "{0}. VOTO POR DIGNIDAD", SINGIN)
+        Console.WriteLine(vbTab & vbTab & "{0}. LISTA A", SINGIN)
+        Console.WriteLine(vbTab & vbTab & "{0}. LISTA B", SINGIN)
+        Console.WriteLine(vbTab & vbTab & "{0}. VOTO NULO", SINGIN)
+        Console.WriteLine(vbTab & vbTab & "{0}. VOTO BLANCO", OUT)
+        Console.WriteLine(vbTab & vbTab & "{0}. CERRAR SECCION", OUT)
+        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+
+        Do
+            op = Console.ReadLine()
+            Try
+                opcion = CByte(op) 'Byte.Parse()
+            Catch ex As OverflowException
+                opcion = OpMainCand.Invalid
+            End Try
+
+            Console.WriteLine("Ud ha ingresado: {0}", op)
+
+            Select Case opcion
+                Case OpMainCand.VotoDignidad
+                    Console.WriteLine("VOTO POR DIGNIDAD")
+                    MenuVotoPorDig()
+                Case OpMainCand.ListaA
+                    Console.WriteLine("LISTA A")
+                    MenuListaA()
+                Case OpMainCand.ListaB
+                    Console.WriteLine("LISTA B")
+                    MenuListaB()
+                Case OpMainCand.VotoBlanco
+                    Console.WriteLine("VOTOS BLANCOS")
+                    MenuVotosBlancos()
+                Case OpMainAdm.Out
+                    'Console.WriteLine("Volviendo al menu principal")
+                    Console.Clear()
+                    MenuPrincipal()
+                Case Else
+                    Console.WriteLine("**** OPCION INVALIDA: [{0}]", opcion)
+            End Select
+
+            Console.ReadLine()
+        Loop Until opcion = OUT
+    End Sub
+
+    Private Sub MenuVotosBlancos()
+        Throw New NotImplementedException()
+    End Sub
+
+    Private Sub MenuListaB()
+        Throw New NotImplementedException()
+    End Sub
+
+    Private Sub MenuListaA()
+        Throw New NotImplementedException()
+    End Sub
+
+    Private Sub MenuVotoPorDig()
+        Throw New NotImplementedException()
     End Sub
 
     Sub MenuPrincipal()

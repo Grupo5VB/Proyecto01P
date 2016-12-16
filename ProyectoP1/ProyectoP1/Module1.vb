@@ -5,8 +5,10 @@
     Dim votoDig As Integer
     Dim votoNulo As Integer
     Dim votoBlanco As Integer
-    Dim listaA As String
-    Dim listaB As String
+    Dim listaPSC As String
+    Dim listaFE As String
+    Dim listaCREO As String
+    Dim listaAlianzaP As String
     Const LOGIN As Byte = 1
     Const SINGIN As Byte = 2
     Const CHPASSWORD As Byte = 3
@@ -138,8 +140,10 @@
     Private Sub MostrarResultadoCandidato()
         Console.Clear()
         Console.WriteLine(vbTab & "MOSTRAR RESULTADOS" & vbCrLf)
-        Console.WriteLine(vbTab & vbTab & "LISTA A:" & listaA)
-        Console.WriteLine(vbTab & vbTab & "LISTA B:" & listaB)
+        Console.WriteLine(vbTab & vbTab & "LISTA 6:" & listaPSC)
+        Console.WriteLine(vbTab & vbTab & "LISTA 10:" & listaFE)
+        Console.WriteLine(vbTab & vbTab & "LISTA 21-23:" & listaCREO)
+        Console.WriteLine(vbTab & vbTab & "LISTA 35:" & listaAlianzaP)
         Console.WriteLine(vbTab & vbTab & "VOTO POR DIGNIDAD:" & votoDig)
         Console.WriteLine(vbTab & vbTab & "VOTO NULO:" & votoNulo)
         Console.WriteLine(vbTab & vbTab & "VOTO BLANCO:" & votoBlanco)
@@ -224,7 +228,6 @@
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
         Console.WriteLine(vbTab & vbTab & "  ADMINISTAR DIGNIDADES" & vbCrLf)
         Console.WriteLine("OPCIÓN 1. MOSTRAR RESULTADOS" & vbCrLf)
-        MostrarResultadoCandidato()
         Console.WriteLine("OPCIÓN 2. VOTOS POR DIGNIDAD" & vbCrLf)
         Console.WriteLine("OPCIÓN 3. LISTAR CANDIDATOS" & vbCrLf)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")

@@ -5,10 +5,10 @@
     Dim votoDig As Integer
     Dim votoNulo As Integer
     Dim votoBlanco As Integer
-    Dim listaPSC As String
-    Dim listaFE As String
-    Dim listaCREO As String
-    Dim listaAlianzaP As String
+    Dim listaPSC As Integer
+    Dim listaFE As Integer
+    Dim listaCREO As Integer
+    Dim listaAlianzaP As Integer
     Const LOGIN As Byte = 1
     Const SINGIN As Byte = 2
     Const CHPASSWORD As Byte = 3

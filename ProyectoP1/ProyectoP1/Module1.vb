@@ -2,6 +2,11 @@
 
     Dim op As String = ""
     Dim opcion As Byte
+    Dim votoDig As Integer
+    Dim votoNulo As Integer
+    Dim votoBlanco As Integer
+    Dim listaA As String
+    Dim listaB As String
     Const LOGIN As Byte = 1
     Const SINGIN As Byte = 2
     Const CHPASSWORD As Byte = 3
@@ -15,17 +20,6 @@
         Out
     End Enum
 
-    Enum OpMainCand  'sucesivo o consecutivo
-        Invalid
-        votoDig
-        ListaA
-        ListaB
-        VotoNulo
-        VotoBlanco
-        VotoDignidad
-        Out
-    End Enum
-
     Enum OpMainAdm
         Invalid
         Dignidades
@@ -33,6 +27,7 @@
         Estadisticas
         Out
     End Enum
+
     Sub Main()
 
         Console.Title = "SISTEMA VOTO ELECTRONICO"
@@ -56,6 +51,7 @@
                     MenuLogVotante()
                 Case OpMain.Candidato
                     Console.WriteLine("Candidato")
+                    MenuLogCandidato()
                 Case OpMain.Admin
                     Console.WriteLine("Administrador")
                     IngresoAdministrador()
@@ -82,8 +78,6 @@
         Console.Write(" INGRESE SU PASSWORD : " & vbTab)
         contraseña = Console.ReadLine()
         MenuAdministrador()
-
-
     End Sub
 
     Private Sub MenuAdministrador()
@@ -144,16 +138,13 @@
     Private Sub MostrarResultadoCandidato()
         Console.Clear()
         Console.WriteLine(vbTab & "MOSTRAR RESULTADOS" & vbCrLf)
-        Console.WriteLine(vbTab & vbTab & "{0}. VOTO POR DIGNIDAD")
-        Console.WriteLine(vbTab & vbTab & "{0}. LISTA A")
-        Console.WriteLine(vbTab & vbTab & "{0}. LISTA B")
-        Console.WriteLine(vbTab & vbTab & "{0}. VOTO NULO")
-        Console.WriteLine(vbTab & vbTab & "{0}. VOTO BLANCO")
-
-
+        Console.WriteLine(vbTab & vbTab & "LISTA A:" & listaA)
+        Console.WriteLine(vbTab & vbTab & "LISTA B:" & listaB)
+        Console.WriteLine(vbTab & vbTab & "VOTO POR DIGNIDAD:" & votoDig)
+        Console.WriteLine(vbTab & vbTab & "VOTO NULO:" & votoNulo)
+        Console.WriteLine(vbTab & vbTab & "VOTO BLANCO:" & votoBlanco)
+        Main()
     End Sub
-
-
 
     Sub MenuPrincipal()
         Console.WriteLine("INGRESAR COMO: " & vbCrLf & vbCrLf)

@@ -147,7 +147,7 @@
         Console.WriteLine(vbTab & vbTab & "VOTO POR DIGNIDAD:" & votoDig)
         Console.WriteLine(vbTab & vbTab & "VOTO NULO:" & votoNulo)
         Console.WriteLine(vbTab & vbTab & "VOTO BLANCO:" & votoBlanco)
-        MenuPrincipal()
+
     End Sub
 
     Sub MenuPrincipal()

@@ -1,0 +1,19 @@
+﻿<?xml version= '1.0' encoding= 'utf-8'?>
+<sistema>
+  <usuarios>
+    <administradores>
+      <administrador id="101" usuario="admin" clave="2016">Rosa</administrador>
+      <administrador id="102" usuario="admin" clave="2016">Olga</administrador>
+      <administrador id="103" usuario="admin" clave="2016">Alvaro</administrador>
+    </administradores>
+    <candidatos>
+      <candidato id="104" usuario="can1" clave="2016">Cinthya Viteri</candidato>
+      <candidato id="105" usuario="can2" clave="2016">Guillermo Lasso</candidato>
+      <candidato id="105" usuario="can2" clave="2016">Abdala Bucaram</candidato>
+      <candidato id="105" usuario="can2" clave="2016">Lenin Moreno</candidato>
+    </candidatos>
+    <votantes>
+      <votante id="0922009774">Rosa Chamba</votante>
+    </votantes>
+  </usuarios>
+</sistema>

@@ -1,4 +1,6 @@
-﻿Module Module1
+﻿Imports System.Xml
+
+Module Module1
 
     Dim op As String = ""
     Dim opcion As Byte
@@ -13,6 +15,10 @@
     Const SINGIN As Byte = 2
     Const CHPASSWORD As Byte = 3
     Const OUT As Byte = 4
+
+    Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
+    Dim xmlDoc As New XmlDocument()
+
 
     Enum OpMain  'sucesivo o consecutivo
         Invalid
@@ -31,7 +37,7 @@
     End Enum
 
     Sub Main()
-
+        xmlDoc.Load(ruta)
         Console.Title = "SISTEMA VOTO ELECTRONICO"
         'Console.ForegroundColor = ConsoleColor.Yellow
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
@@ -50,7 +56,7 @@
             Select Case opcion
                 Case OpMain.Votante
                     Console.WriteLine("Votante")
-                    MenuLogVotante()
+                    MenuLogVotante(xmlDoc)
                 Case OpMain.Candidato
                     Console.WriteLine("Candidato")
                     MenuLogCandidato()
@@ -160,13 +166,24 @@
 
     End Sub
 
-    Sub MenuLogVotante()
+    Sub MenuLogVotante(xmlDoc As XmlDocument)
         Dim cedula As String
         Console.Clear()
         Console.WriteLine(vbTab & "INICIAR SESION VOTANTE " & vbCrLf)
         Console.Write(" INGRESE SU NÚMERO DE CÉDULA : " & vbTab)
         cedula = Console.ReadLine()
-        MenuCandPresi()
+        Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
+        For Each nodo As XmlNode In raiz
+            For Each votante As XmlNode In nodo.ChildNodes
+                If votante.Name = cedula Then
+                    MenuCandPresi()
+                Else
+                    Console.WriteLine("Votante no registrado")
+                End If
+            Next
+        Next
+
+        'MenuCandPresi()
     End Sub
 
     Sub MenuCandPresi()

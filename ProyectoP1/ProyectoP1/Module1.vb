@@ -16,7 +16,7 @@ Module Module1
     Const CHPASSWORD As Byte = 3
     Const OUT As Byte = 4
 
-    Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
+    Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P13\ProyectoP1\ProyectoP1\SistVotoElectronico.xml"
     Dim xmlDoc As New XmlDocument()
 
 
@@ -59,7 +59,7 @@ Module Module1
                     MenuLogVotante(xmlDoc)
                 Case OpMain.Candidato
                     Console.WriteLine("Candidato")
-                    MenuLogCandidato()
+                    MenuLogCandidato(xmlDoc)
                 Case OpMain.Admin
                     Console.WriteLine("Administrador")
                     IngresoAdministrador()
@@ -131,7 +131,7 @@ Module Module1
 
     End Sub
 
-    Private Sub MenuLogCandidato()
+    Private Sub MenuLogCandidato(xmlDoc As XmlDocument)
         Dim usuario As String
         Dim clave As String
         Console.Clear()
@@ -140,7 +140,23 @@ Module Module1
         usuario = Console.ReadLine()
         Console.Write(" INGRESE SU PASSWORD : " & vbTab)
         clave = Console.ReadLine()
-        MostrarResultadoCandidato()
+        Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
+        For Each nodo As XmlNode In raiz
+            For Each registro As XmlNode In nodo.ChildNodes
+                For Each usuarios As XmlNode In registro.ChildNodes
+                    For Each candidatos As XmlNode In usuarios
+                        If candidatos.Name = "candidato" Then
+                            If candidatos.Attributes(1).Value = usuario And candidatos.Attributes(2).Value = clave Then
+                                MostrarResultadoCandidato()
+                            Else
+                                Console.WriteLine("Candidato no registrado")
+                            End If
+                        End If
+                    Next
+                Next
+            Next
+        Next
+
     End Sub
 
     Private Sub MostrarResultadoCandidato()

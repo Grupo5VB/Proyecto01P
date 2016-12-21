@@ -171,6 +171,11 @@ Module Module1
         Console.WriteLine(vbTab & vbTab & "VOTO POR DIGNIDAD:" & votoDig)
         Console.WriteLine(vbTab & vbTab & "VOTO NULO:" & votoNulo)
         Console.WriteLine(vbTab & vbTab & "VOTO BLANCO:" & votoBlanco)
+        Console.ReadLine()
+        Console.WriteLine(vbTab & vbTab & "Regresando al Menú Principal...")
+        Console.ReadLine()
+
+        MenuPrincipal()
 
     End Sub
 

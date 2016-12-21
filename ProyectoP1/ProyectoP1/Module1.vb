@@ -16,7 +16,7 @@ Module Module1
     Const CHPASSWORD As Byte = 3
     Const OUT As Byte = 4
 
-    Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P13\ProyectoP1\ProyectoP1\SistVotoElectronico.xml"
+    Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
     Dim xmlDoc As New XmlDocument()
 
 
@@ -51,7 +51,7 @@ Module Module1
             End Try
 
             'opcion = CByte(op) 'Byte.Parse()
-            Console.WriteLine("Ud ha ingresado: {0}", op)
+            'Console.WriteLine("Ud ha ingresado: {0}", op)
 
             Select Case opcion
                 Case OpMain.Votante
@@ -71,7 +71,7 @@ Module Module1
 
             Console.ReadLine()
         Loop Until opcion = OUT
-        Console.WriteLine("GRACIAS, BYE")
+        Console.WriteLine("Saliendo del Sistema")
         Console.ReadLine()
 
     End Sub
@@ -180,6 +180,8 @@ Module Module1
     End Sub
 
     Sub MenuPrincipal()
+        Console.Clear()
+        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
         Console.WriteLine("INGRESAR COMO: " & vbCrLf & vbCrLf)
         Console.WriteLine(vbTab & vbTab & "{0}. Votante", LOGIN)
         Console.WriteLine(vbTab & vbTab & "{0}. Candidato", SINGIN)
@@ -191,7 +193,6 @@ Module Module1
 
     Sub MenuLogVotante(xmlDoc As XmlDocument)
         Dim cedula As String
-        Dim cedVot As String
         Console.Clear()
         Console.WriteLine(vbTab & "INICIAR SESION VOTANTE " & vbCrLf)
         Console.Write(" INGRESE SU NÚMERO DE CÉDULA : " & vbTab)
@@ -204,6 +205,7 @@ Module Module1
                         If votante.Name = "votante" Then
                             If votante.Attributes(0).Value = cedula Then
                                 MenuCandPresi()
+                                Exit For
                             Else
                                 Console.WriteLine("Votante no registrado")
                             End If
@@ -241,8 +243,18 @@ Module Module1
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
         opcion = Console.ReadLine()
+
+        Console.ReadLine()
+        Console.WriteLine("Validando su voto....")
+        Console.ReadLine()
+        Console.WriteLine("Gracias por cumplir con su deber ciudadano....")
+        Console.ReadLine()
+        Console.WriteLine("Regresando al Menú principal....")
+        Console.ReadLine()
+
         MenuPrincipal()
     End Sub
+
     Sub MenuAdmDignidades()
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)

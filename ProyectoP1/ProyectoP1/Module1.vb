@@ -168,22 +168,27 @@ Module Module1
 
     Sub MenuLogVotante(xmlDoc As XmlDocument)
         Dim cedula As String
+        Dim cedVot As String
         Console.Clear()
         Console.WriteLine(vbTab & "INICIAR SESION VOTANTE " & vbCrLf)
         Console.Write(" INGRESE SU NÚMERO DE CÉDULA : " & vbTab)
         cedula = Console.ReadLine()
         Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
         For Each nodo As XmlNode In raiz
-            For Each votante As XmlNode In nodo.ChildNodes
-                If votante.Name = cedula Then
-                    MenuCandPresi()
-                Else
-                    Console.WriteLine("Votante no registrado")
-                End If
+            For Each registro As XmlNode In nodo.ChildNodes
+                For Each usuarios As XmlNode In registro.ChildNodes
+                    For Each votante As XmlNode In usuarios
+                        If votante.Name = "votante" Then
+                            If votante.Attributes(0).Value = cedula Then
+                                MenuCandPresi()
+                            Else
+                                Console.WriteLine("Votante no registrado")
+                            End If
+                        End If
+                    Next
+                Next
             Next
         Next
-
-        'MenuCandPresi()
     End Sub
 
     Sub MenuCandPresi()

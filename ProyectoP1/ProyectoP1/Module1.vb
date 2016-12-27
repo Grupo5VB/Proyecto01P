@@ -16,8 +16,8 @@ Module Module1
     Const CHPASSWORD As Byte = 3
     Const OUT As Byte = 4
 
-    'Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
-    Dim ruta = "C:\Users\ESTUDIANTE\Documents\ProyectoVS\ProyectoP1\SistVotoElectronico.xml"
+    Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
+    'Dim ruta = "C:\Users\ESTUDIANTE\Documents\ProyectoVS\ProyectoP1\SistVotoElectronico.xml"
     Dim xmlDoc As New XmlDocument()
 
 
@@ -146,7 +146,6 @@ Module Module1
 
             Console.ReadLine()
         Loop Until opcion = OUT
-
     End Sub
 
     Private Sub MenuLogCandidato(xmlDoc As XmlDocument)
@@ -285,6 +284,7 @@ Module Module1
         opcion = Console.ReadLine()
         MenuAdministrador()
     End Sub
+
     Sub MenuAdmCandidatos()
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)

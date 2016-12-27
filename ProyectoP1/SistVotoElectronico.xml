@@ -7,19 +7,60 @@
       <administrador id="103" usuario="admin" clave="2016">Alvaro</administrador>
     </administradores>
     <candidatos>
-      <candidato id="104" usuario="presi1" clave="2016">Cinthya Viteri</candidato>
-      <candidato id="104" usuario="vice1" clave="2016">Mauricio Pozo</candidato>
-      <candidato id="104" usuario="presi2" clave="2016">Guillermo Lasso</candidato>
-      <candidato id="104" usuario="vice2" clave="2016">Andres Paez</candidato>
-      <candidato id="104" usuario="presi3" clave="2016">Abdala Bucaram</candidato>
-      <candidato id="104" usuario="vice3" clave="2016">Ramiro Aguilar</candidato>
-      <candidato id="104" usuario="presi4" clave="2016">Lenin Moreno</candidato>
-      <candidato id="104" usuario="vice4" clave="2016">Jorge Glas</candidato>
-      <candidato id="105" usuario="conc1" clave="2016">Luis Fernandez</candidato>
+      <candidato id="104" usuario="presi1" clave="2016" lista= "6 PSC">Cinthya Viteri</candidato>
+      <candidato id="104" usuario="vice1" clave="2016" lista= "6 PSC">Mauricio Pozo</candidato>
+      <candidato id="104" usuario="presi2" clave="2016" lista= "21 - 23 CREO - SUMA">Guillermo Lasso</candidato>
+      <candidato id="104" usuario="vice2" clave="2016" lista= "21 - 23 CREO - SUMA">Andres Paez</candidato>
+      <candidato id="104" usuario="presi3" clave="2016" lista= "10 FE">Abdala Bucaram</candidato>
+      <candidato id="104" usuario="vice3" clave="2016" lista= "10 FE">Ramiro Aguilar</candidato>
+      <candidato id="104" usuario="presi4" clave="2016" lista= "35 ALIANZA PAIS">Lenin Moreno</candidato>
+      <candidato id="104" usuario="vice4" clave="2016" lista= "35 ALIANZA PAIS">Jorge Glas</candidato>
+      <candidato id="105" usuario="conc1" clave="2016" lista= "6 PSC">Luis Fernandez</candidato>
+      <candidato id="105" usuario="conc2" clave="2016" lista= "21 - 23 CREO - SUMA">Moises Reyes</candidato>
+      <candidato id="105" usuario="conc3" clave="2016" lista= "10 FE">Ricardo Layana</candidato>
+      <candidato id="105" usuario="conc4" clave="2016" lista= "35 ALIANZA PAIS">Carlos Villacres</candidato>
+      <candidato id="106" usuario="alcalde1" clave="2016" lista= "6 PSC">Alberto Guzmán</candidato>
+      <candidato id="106" usuario="alcalde2" clave="2016" lista= "21 - 23 CREO - SUMA">Viviana Bonilla</candidato>
+      <candidato id="106" usuario="alcalde3" clave="2016" lista= "10 FE">Isabel Cantos</candidato>
+      <candidato id="106" usuario="alcalde4" clave="2016" lista= "35 ALIANZA PAIS">Ney Calderón</candidato>
     </candidatos>
     <votantes>
-      <votante id="0922009774">Rosa Chamba</votante>
-      <votante id="0904085453">Galo Celleri</votante>
+      <votante id="0922009774" estado= "no">Rosa Chamba</votante>
+      <votante id="0904085453" estado= "no">Galo Celleri</votante>
+      <votante id="0921505061" estado= "no">Olga Tohabanda</votante>
+      <votante id="0912567842" estado= "no">César Recalde</votante>
+      <votante id="0953891234" estado= "no">Andrea Gálvez</votante>
+      <votante id="1300234511" estado= "no">Claudia Ruiz</votante>
+      <votante id="0923568974" estado= "no">Alvaro Lucas</votante>
+      <votante id="0922451078" estado= "no">José Márquez</votante>
+      <votante id="1123560097" estado= "no">Caleb Muñoz</votante>
+      <votante id="0933987520" estado= "no">Francisco León</votante>
     </votantes>
   </usuarios>
+  <dignidades>
+      <dignidad id="104" nombre= "Binomio: Presidente y Vicepresidente">
+           <lista6>0</lista6>
+           <lista21-23>0</lista21-23>
+           <lista10>0</lista10>
+           <lista35>0</lista35>
+           <nulo>0</nulo>
+           <blanco>0</blanco>
+      </dignidad>
+      <dignidad id="105" nombre= "Concejal">
+            <lista6>0</lista6>
+           <lista21-23>0</lista21-23>
+           <lista10>0</lista10>
+           <lista35>0</lista35>
+           <nulo>0</nulo>
+           <blanco>0</blanco>
+      </dignidad>
+      <dignidad id="106" nombre= "Alcalde">
+            <lista6>0</lista6>
+           <lista21-23>0</lista21-23>
+           <lista10>0</lista10>
+           <lista35>0</lista35>
+           <nulo>0</nulo>
+           <blanco>0</blanco>
+      </dignidad>
+  </dignidades>
 </sistema>

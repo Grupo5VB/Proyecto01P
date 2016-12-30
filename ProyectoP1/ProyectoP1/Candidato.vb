@@ -41,4 +41,9 @@
         End Set
     End Property
 
+    Public Sub New(orgPol As String, nombre As String)
+        Me.OrgPolitica = orgPol
+        Nombres = nombre
+    End Sub
+
 End Class

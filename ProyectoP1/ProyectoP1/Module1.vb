@@ -16,6 +16,12 @@ Module Module1
     Const CHPASSWORD As Byte = 3
     Const OUT As Byte = 4
 
+    Dim binomios As New ArrayList()
+    Dim concejales As New ArrayList()
+    Dim alcaldes As New ArrayList()
+
+
+
     Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
     'Dim ruta = "C:\Users\ESTUDIANTE\Documents\ProyectoVS\ProyectoP1\SistVotoElectronico.xml"
     Dim xmlDoc As New XmlDocument()
@@ -39,6 +45,7 @@ Module Module1
 
     Sub Main()
         xmlDoc.Load(ruta)
+        CargarCandidatos(xmlDoc)
         Console.Title = "SISTEMA VOTO ELECTRONICO"
         'Console.ForegroundColor = ConsoleColor.Yellow
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
@@ -75,6 +82,43 @@ Module Module1
         Console.WriteLine("Saliendo del Sistema")
         Console.ReadLine()
 
+    End Sub
+
+    Private Sub CargarCandidatos(xmlDoc As XmlDocument)
+        'Dim codDig, nomDig As String
+        Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
+        For Each nodo As XmlNode In raiz
+            For Each registro As XmlNode In nodo.ChildNodes
+                For Each usuarios As XmlNode In registro.ChildNodes
+                    For Each usuario As XmlNode In usuarios
+                        If usuario.Name = "candidato" Then
+                            Select Case usuario.Attributes(1).Value
+                                Case "presi"
+                                    'codDig = usuario.Attributes(0).Value
+                                    'nomDig = BuscarDignidad(codDig, raiz)
+                                    Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
+                                    binomios.Add(bin)
+                                Case "vice"
+                                    'codDig = usuario.Attributes(0).Value
+                                    'nomDig = BuscarDignidad(codDig, raiz)
+                                    Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
+                                    binomios.Add(bin)
+                                Case "conc"
+                                    'codDig = usuario.Attributes(0).Value
+                                    'nomDig = BuscarDignidad(codDig, raiz)
+                                    Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
+                                    concejales.Add(bin)
+                                Case "alcalde"
+                                    'codDig = usuario.Attributes(0).Value
+                                    'nomDig = BuscarDignidad(codDig, raiz)
+                                    Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
+                                    alcaldes.Add(bin)
+                            End Select
+                        End If
+                    Next
+                Next
+            Next
+        Next
     End Sub
 
     Private Sub IngresoAdministrador()
@@ -234,13 +278,20 @@ Module Module1
     End Sub
 
     Sub MenuCandPresi()
+        Dim lista As String = ""
+        Dim opMenu As Integer = 1
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
         Console.WriteLine(vbTab & vbTab & "  CANDIDATOS A PRESIDENTE Y VICEPRESIDENTE" & vbCrLf)
-        Console.WriteLine("OPCIÓN 1. LISTA 6 PSC" & vbCrLf & vbTab & "Presidente : Cinthya Viteri" & vbCrLf & vbTab & "Vicepresidente : Mauricio Pozo" & vbCrLf)
-        Console.WriteLine("OPCIÓN 2. LISTA 10 FE" & vbCrLf & vbTab & "Presidente : Abdalá Bucaram" & vbCrLf & vbTab & "Vicepresidente : Ramiro Aguilar" & vbCrLf)
-        Console.WriteLine("OPCIÓN 3. LISTA 21 - 23 CREO - SUMA" & vbCrLf & vbTab & "Presidente : Guillermo Lasso" & vbCrLf & vbTab & "Vicepresidente : Andrés Paez" & vbCrLf)
-        Console.WriteLine("OPCIÓN 4. LISTA 35 ALIANZA PAIS" & vbCrLf & vbTab & "Presidente : Lenin Moreno" & vbCrLf & vbTab & "Vicepresidente : Jorge Glas" & vbCrLf)
+        For Each bin As Candidato In binomios
+            If lista = bin.OrgPolitica Then
+                Console.WriteLine(vbTab & "Vicepresidente: " & bin.Nombres & vbCrLf)
+            Else
+                lista = bin.OrgPolitica
+                Console.WriteLine("Opción " & opMenu & " : " & " Lista " & lista & vbCrLf & vbTab & "Presidente: " & bin.Nombres)
+                opMenu += 1
+            End If
+        Next
         Console.WriteLine("OPCIÓN 5. Voto Nulo" & vbCrLf)
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
@@ -249,13 +300,32 @@ Module Module1
     End Sub
 
     Sub MenuCandConcejal()
+        Dim opMenu As Integer = 1
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
         Console.WriteLine(vbTab & vbTab & "  CANDIDATOS A CONCEJALES" & vbCrLf)
-        Console.WriteLine("OPCIÓN 1. LISTA 6 PSC" & vbCrLf & vbTab & "Luis Fernández" & vbCrLf)
-        Console.WriteLine("OPCIÓN 2. LISTA 10 FE" & vbCrLf & vbTab & "Angélica Ramos" & vbCrLf)
-        Console.WriteLine("OPCIÓN 3. LISTA 21 - 23 CREO - SUMA" & vbCrLf & vbTab & "Rodrigo Sánchez" & vbCrLf)
-        Console.WriteLine("OPCIÓN 4. LISTA 35 ALIANZA PAIS" & vbCrLf & vbTab & "Ana Macías" & vbCrLf)
+        For Each conc As Candidato In concejales
+            Console.WriteLine("Opción " & opMenu & " : " & " Lista " & conc.OrgPolitica & vbCrLf & vbTab & "Nombre: " & conc.Nombres & vbCrLf)
+            opMenu += 1
+        Next
+        Console.WriteLine("OPCIÓN 5. Voto Nulo" & vbCrLf)
+        Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
+        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+        opcion = Console.ReadLine()
+        MenuCandAlcalde()
+
+    End Sub
+
+    Sub MenuCandAlcalde()
+        Dim opMenu As Integer = 1
+        Console.Clear()
+        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
+        Console.WriteLine(vbTab & vbTab & "  CANDIDATOS A ALCALDE" & vbCrLf)
+
+        For Each alca As Candidato In alcaldes
+            Console.WriteLine("Opción " & opMenu & " : " & " Lista " & alca.OrgPolitica & vbCrLf & vbTab & "Nombre: " & alca.Nombres & vbCrLf)
+            opMenu += 1
+        Next
         Console.WriteLine("OPCIÓN 5. Voto Nulo" & vbCrLf)
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")

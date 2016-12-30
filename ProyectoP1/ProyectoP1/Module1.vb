@@ -20,7 +20,7 @@ Module Module1
     Dim concejales As New ArrayList()
     Dim alcaldes As New ArrayList()
 
-
+    Dim votoTemp As New ArrayList()
 
     Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
     'Dim ruta = "C:\Users\ESTUDIANTE\Documents\ProyectoVS\ProyectoP1\SistVotoElectronico.xml"
@@ -280,6 +280,7 @@ Module Module1
     Sub MenuCandPresi()
         Dim lista As String = ""
         Dim opMenu As Integer = 1
+        votoTemp.Clear()
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
         Console.WriteLine(vbTab & vbTab & "  CANDIDATOS A PRESIDENTE Y VICEPRESIDENTE" & vbCrLf)
@@ -296,6 +297,7 @@ Module Module1
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
         opcion = Console.ReadLine()
+        votoTemp.Add(opcion)
         MenuCandConcejal()
     End Sub
 
@@ -312,12 +314,14 @@ Module Module1
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
         opcion = Console.ReadLine()
+        votoTemp.Add(opcion)
         MenuCandAlcalde()
 
     End Sub
 
     Sub MenuCandAlcalde()
         Dim opMenu As Integer = 1
+        Dim validacion As Integer
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
         Console.WriteLine(vbTab & vbTab & "  CANDIDATOS A ALCALDE" & vbCrLf)
@@ -330,15 +334,38 @@ Module Module1
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
         opcion = Console.ReadLine()
+        votoTemp.Add(opcion)
+        Console.WriteLine("Validación de voto:  ")
+        Console.WriteLine("Todos los datos son correctos?")
+        Console.WriteLine("Si son correctos PRESIONE ( 1 ) para imprimir su voto, si no son correctos PRESIONE ( 2 ) para volver a votar.")
+        validacion = Console.ReadLine()
+        Select Case validacion
+            Case 1
+                GuardarVoto(votoTemp)
+            Case 2
+                MenuCandPresi()
+            Case Else
+                Console.WriteLine("Opción no válida....")
+        End Select
+        ''Console.ReadLine()
 
-        Console.ReadLine()
+    End Sub
+
+    Private Sub GuardarVoto(votoTemp As ArrayList)
+        Select Case votoTemp(0)
+            Case 1
+            Case 2
+            Case 3
+            Case 4
+            Case 5
+            Case 6
+        End Select
         Console.WriteLine("Validando su voto....")
         Console.ReadLine()
         Console.WriteLine("Gracias por cumplir con su deber ciudadano....")
         Console.ReadLine()
         Console.WriteLine("Regresando al Menú principal....")
         Console.ReadLine()
-
         MenuPrincipal()
     End Sub
 

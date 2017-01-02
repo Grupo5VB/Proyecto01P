@@ -213,7 +213,7 @@ Module Module1
                                 Console.WriteLine("Candidato no registrado")
                             End If
                         End If
-                        Exit For
+                        'Exit For
                     Next
                 Next
             Next

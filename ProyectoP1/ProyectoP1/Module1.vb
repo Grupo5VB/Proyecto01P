@@ -22,7 +22,7 @@ Module Module1
 
     Dim votoTemp As New ArrayList()
 
-    Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
+    Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P16\ProyectoP1\SistVotoElectronico.xml"
     'Dim ruta = "C:\Users\ESTUDIANTE\Documents\ProyectoVS\ProyectoP1\SistVotoElectronico.xml"
     Dim xmlDoc As New XmlDocument()
 
@@ -208,7 +208,7 @@ Module Module1
                     For Each candidatos As XmlNode In usuarios
                         If candidatos.Name = "candidato" Then
                             If candidatos.Attributes(1).Value = usuario And candidatos.Attributes(2).Value = clave Then
-                                MostrarResultadoCandidato()
+                                MenuCandidatos()
                             Else
                                 Console.WriteLine("Candidato no registrado")
                             End If
@@ -222,21 +222,74 @@ Module Module1
 
     End Sub
 
-    Private Sub MostrarResultadoCandidato()
+    Sub MostrarResultadoCandidato(xmlDoc As XmlDocument)
         Console.Clear()
-        Console.WriteLine(vbTab & "MOSTRAR RESULTADOS" & vbCrLf)
-        Console.WriteLine(vbTab & vbTab & "LISTA 6:" & listaPSC)
-        Console.WriteLine(vbTab & vbTab & "LISTA 10:" & listaFE)
-        Console.WriteLine(vbTab & vbTab & "LISTA 21-23:" & listaCREO)
-        Console.WriteLine(vbTab & vbTab & "LISTA 35:" & listaAlianzaP)
-        Console.WriteLine(vbTab & vbTab & "VOTO POR DIGNIDAD:" & votoDig)
-        Console.WriteLine(vbTab & vbTab & "VOTO NULO:" & votoNulo)
-        Console.WriteLine(vbTab & vbTab & "VOTO BLANCO:" & votoBlanco)
-        Console.ReadLine()
-        Console.WriteLine(vbTab & vbTab & "Regresando al Menú Principal...")
-        Console.ReadLine()
+        Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P15\ProyectoP1\SistVotoElectronico.xml"
+        xmlDoc.Load(ruta)
+        Dim reader As New XmlTextReader(ruta)
+        Dim encontrado = False
+        While reader.Read()
 
-        MenuPrincipal()
+            Select Case reader.NodeType
+                Case XmlNodeType.Element
+                    If reader.Name = "lista6" Then
+                        Console.WriteLine("Lista 6: " & reader.Value)
+                        encontrado = True
+                    End If
+
+                    If reader.Name = "lista21-23" Then
+                        Console.WriteLine("Lista 21-23: " & reader.Value)
+                        encontrado = True
+                    End If
+                    If reader.Name = "lista10" Then
+                        Console.WriteLine("Lista 10: " & reader.Value)
+                        encontrado = True
+                    End If
+                    If reader.Name = "lista35" Then
+                        Console.WriteLine("Lista 35: " & reader.Value)
+                        encontrado = True
+                    End If
+
+                    If reader.Name = "nulo" Then
+                        Console.WriteLine("Voto nulo: " & reader.Value)
+                        encontrado = True
+                    End If
+
+                    If reader.Name = "blanco" Then
+                        Console.WriteLine("Voto blanco: " & reader.Value)
+                        encontrado = True
+                    End If
+                    If reader.Name = "dignidad" Then
+                        reader.MoveToAttribute("id")
+                        reader.MoveToAttribute("nombre")
+                        Console.WriteLine("Dignidad: " & reader.Value)
+                    End If
+            End Select
+
+        End While
+
+
+        Console.WriteLine(vbTab & vbTab & "Regresando al Menú Candidato...")
+        Console.ReadLine()
+        MenuCandidatos()
+    End Sub
+
+    Sub MenuCandidatos()
+        Console.Clear()
+        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
+        Console.WriteLine(vbTab & vbTab & "  CANDIDATOS" & vbCrLf)
+        Console.WriteLine("OPCIÓN 1. MOSTRAR RESULTADOS" & vbCrLf)
+        Console.WriteLine("OPCIÓN 2. SALIR" & vbCrLf)
+        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+        opcion = Console.ReadLine()
+        Dim candidato As XmlNodeList = xmlDoc.GetElementsByTagName("id")
+        If opcion = 1 Then
+            MostrarResultadoCandidato(xmlDoc)
+        Else
+            Console.WriteLine(vbTab & vbTab & "Regresando al Menú Principal...")
+            Console.ReadLine()
+            MenuPrincipal()
+        End If
 
     End Sub
 

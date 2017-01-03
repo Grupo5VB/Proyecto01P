@@ -100,23 +100,15 @@ Module Module1
                         If usuario.Name = "candidato" Then
                             Select Case usuario.Attributes(1).Value
                                 Case "presi"
-                                    'codDig = usuario.Attributes(0).Value
-                                    'nomDig = BuscarDignidad(codDig, raiz)
                                     Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
                                     binomios.Add(bin)
                                 Case "vice"
-                                    'codDig = usuario.Attributes(0).Value
-                                    'nomDig = BuscarDignidad(codDig, raiz)
                                     Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
                                     binomios.Add(bin)
                                 Case "conc"
-                                    'codDig = usuario.Attributes(0).Value
-                                    'nomDig = BuscarDignidad(codDig, raiz)
                                     Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
                                     concejales.Add(bin)
                                 Case "alcalde"
-                                    'codDig = usuario.Attributes(0).Value
-                                    'nomDig = BuscarDignidad(codDig, raiz)
                                     Dim bin As New Candidato(usuario.Attributes(3).Value, usuario.InnerText)
                                     alcaldes.Add(bin)
                             End Select

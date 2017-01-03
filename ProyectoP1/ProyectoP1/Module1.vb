@@ -16,11 +16,17 @@ Module Module1
     Const CHPASSWORD As Byte = 3
     Const OUT As Byte = 4
 
+    Dim cedula As String
+
     Dim binomios As New ArrayList()
     Dim concejales As New ArrayList()
     Dim alcaldes As New ArrayList()
 
     Dim votoTemp As New ArrayList()
+
+    Dim votosBinomio As New ArrayList()
+    Dim votosConcejal As New ArrayList()
+    Dim votosAlcalde As New ArrayList()
 
     Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P16\ProyectoP1\SistVotoElectronico.xml"
     'Dim ruta = "C:\Users\ESTUDIANTE\Documents\ProyectoVS\ProyectoP1\SistVotoElectronico.xml"
@@ -318,10 +324,18 @@ Module Module1
                     For Each votante As XmlNode In usuarios
                         If votante.Name = "votante" Then
                             If votante.Attributes(0).Value = cedula Then
-                                MenuCandPresi()
-                                Exit For
+                                If votante.Attributes(1).Value = "no" Then
+                                    MenuCandPresi()
+                                    Exit For
+                                Else
+                                    Console.WriteLine("El votante ya sufragó")
+                                    Console.WriteLine(" ")
+                                    Exit For
+                                End If
                             Else
-                                Console.WriteLine("Votante no registrado")
+                                Console.WriteLine(" ")
+                                Console.WriteLine("Ingrese un número de cédula válido...")
+                                ''Exit For
                             End If
                         End If
                     Next
@@ -393,9 +407,9 @@ Module Module1
         Console.WriteLine("Si son correctos PRESIONE ( 1 ) para imprimir su voto, si no son correctos PRESIONE ( 2 ) para volver a votar.")
         validacion = Console.ReadLine()
         Select Case validacion
-            Case 1
-                GuardarVoto(votoTemp)
-            Case 2
+            Case "1"
+                GuardarVoto(votoTemp, xmlDoc)
+            Case "2"
                 MenuCandPresi()
             Case Else
                 Console.WriteLine("Opción no válida....")
@@ -404,15 +418,120 @@ Module Module1
 
     End Sub
 
-    Private Sub GuardarVoto(votoTemp As ArrayList)
+    Private Sub GuardarVoto(votoTemp As ArrayList, xmlDoc As XmlDocument)
+        votosBinomio.Clear()
+        votosConcejal.Clear()
+        votosAlcalde.Clear()
+
+        Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
+        For Each nodo As XmlNode In raiz
+            For Each dignidades As XmlNode In nodo.ChildNodes
+                For Each dignidad As XmlNode In dignidades
+                    If dignidad.Name = "dignidad" Then
+                        If dignidad.Attributes(0).Value = "104" Then
+                            For Each listas As XmlNode In dignidad.ChildNodes
+                                votosBinomio.Add(listas.InnerText)
+                            Next
+                        ElseIf dignidad.Attributes(0).Value = "105" Then
+                            For Each listas As XmlNode In dignidad.ChildNodes
+                                votosConcejal.Add(listas.InnerText)
+                            Next
+                        Else
+                            For Each listas As XmlNode In dignidad.ChildNodes
+                                votosAlcalde.Add(listas.InnerText)
+                            Next
+                        End If
+                    End If
+                Next
+            Next
+        Next
+
+        Dim temporal As Integer = 0
+        Dim temporal1 As Integer = 0
+        Dim temporal2 As Integer = 0
+
         Select Case votoTemp(0)
             Case 1
+                temporal = CInt(votosBinomio(0))
+                temporal += 1
+                votosBinomio(0) = CStr(temporal)
+                'Console.WriteLine(temporal)
             Case 2
+                temporal = CInt(votosBinomio(1))
+                temporal += 1
+                votosBinomio(1) = CStr(temporal)
             Case 3
+                temporal = CInt(votosBinomio(2))
+                temporal += 1
+                votosBinomio(2) = CStr(temporal)
             Case 4
+                temporal = CInt(votosBinomio(3))
+                temporal += 1
+                votosBinomio(3) = CStr(temporal)
             Case 5
+                temporal = CInt(votosBinomio(4))
+                temporal += 1
+                votosBinomio(4) = CStr(temporal)
             Case 6
+                temporal = CInt(votosBinomio(5))
+                temporal += 1
+                votosBinomio(5) = CStr(temporal)
         End Select
+
+        Select Case votoTemp(1)
+            Case 1
+                temporal1 = CInt(votosConcejal(0))
+                temporal1 += 1
+                votosConcejal(0) = CStr(temporal1)
+            Case 2
+                temporal1 = CInt(votosConcejal(1))
+                temporal1 += 1
+                votosConcejal(1) = CStr(temporal1)
+            Case 3
+                temporal1 = CInt(votosConcejal(2))
+                temporal1 += 1
+                votosConcejal(2) = CStr(temporal1)
+            Case 4
+                temporal1 = CInt(votosConcejal(3))
+                temporal1 += 1
+                votosConcejal(3) = CStr(temporal1)
+            Case 5
+                temporal1 = CInt(votosConcejal(4))
+                temporal1 += 1
+                votosConcejal(4) = CStr(temporal1)
+            Case 6
+                temporal1 = CInt(votosConcejal(5))
+                temporal1 += 1
+                votosConcejal(5) = CStr(temporal1)
+        End Select
+
+        Select Case votoTemp(2)
+            Case 1
+                temporal2 = CInt(votosAlcalde(0))
+                temporal2 += 1
+                votosAlcalde(0) = CStr(temporal2)
+            Case 2
+                temporal2 = CInt(votosAlcalde(1))
+                temporal2 += 1
+                votosAlcalde(1) = CStr(temporal2)
+            Case 3
+                temporal2 = CInt(votosAlcalde(2))
+                temporal2 += 1
+                votosAlcalde(2) = CStr(temporal2)
+            Case 4
+                temporal2 = CInt(votosAlcalde(3))
+                temporal2 += 1
+                votosAlcalde(3) = CStr(temporal2)
+            Case 5
+                temporal2 = CInt(votosAlcalde(4))
+                temporal2 += 1
+                votosAlcalde(4) = CStr(temporal2)
+            Case 6
+                temporal2 = CInt(votosAlcalde(5))
+                temporal2 += 1
+                votosAlcalde(5) = CStr(temporal2)
+        End Select
+        GuardarVotoXml(votosBinomio, votosConcejal, votosAlcalde, xmlDoc)
         Console.WriteLine("Validando su voto....")
         Console.ReadLine()
         Console.WriteLine("Gracias por cumplir con su deber ciudadano....")
@@ -420,6 +539,47 @@ Module Module1
         Console.WriteLine("Regresando al Menú principal....")
         Console.ReadLine()
         MenuPrincipal()
+    End Sub
+
+    Private Sub GuardarVotoXml(votosBinomio As ArrayList, votosConcejal As ArrayList, votosAlcalde As ArrayList, xmlDoc As XmlDocument)
+        xmlDoc.Load(ruta)
+        Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
+        For Each nodo As XmlNode In raiz
+            For Each dignidades As XmlNode In nodo.ChildNodes
+                For Each dignidad As XmlNode In dignidades
+                    If dignidad.Name = "dignidad" Then
+                        If dignidad.Attributes(0).Value = "104" Then
+                            Dim i As Integer = 0
+                            For Each listas As XmlNode In dignidad.ChildNodes
+                                listas.InnerText = votosBinomio(i)
+                                i += 1
+                            Next
+                        ElseIf dignidad.Attributes(0).Value = "105" Then
+                            Dim i As Integer = 0
+                            For Each listas As XmlNode In dignidad.ChildNodes
+                                listas.InnerText = votosConcejal(i)
+                                i += 1
+                            Next
+                        Else
+                            Dim i As Integer = 0
+                            For Each listas As XmlNode In dignidad.ChildNodes
+                                listas.InnerText = votosAlcalde(i)
+                                i += 1
+                            Next
+                        End If
+                    End If
+                    For Each votante As XmlNode In dignidad
+                        If votante.Name = "votante" Then
+                            If votante.Attributes(0).Value = cedula Then
+                                votante.Attributes(1).InnerText = "si"
+                            End If
+                        End If
+                    Next
+                Next
+            Next
+        Next
+        xmlDoc.Save(ruta)
+        xmlDoc.Load(ruta)
     End Sub
 
     Sub MenuAdmDignidades()

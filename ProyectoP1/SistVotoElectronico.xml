@@ -1,4 +1,4 @@
-﻿<?xml version= '1.0' encoding= 'utf-8'?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <sistema>
   <usuarios>
     <administradores>
@@ -7,60 +7,60 @@
       <administrador id="103" usuario="admin" clave="2016">Alvaro</administrador>
     </administradores>
     <candidatos>
-      <candidato id="104" usuario="presi" clave="presi1" lista= "6 PSC">Cinthya Viteri</candidato>
-      <candidato id="104" usuario="vice" clave="vice1" lista= "6 PSC">Mauricio Pozo</candidato>
-      <candidato id="104" usuario="presi" clave="presi2" lista= "21 - 23 CREO - SUMA">Guillermo Lasso</candidato>
-      <candidato id="104" usuario="vice" clave="vice2" lista= "21 - 23 CREO - SUMA">Andres Paez</candidato>
-      <candidato id="104" usuario="presi" clave="presi3" lista= "10 FE">Abdala Bucaram</candidato>
-      <candidato id="104" usuario="vice" clave="vice3" lista= "10 FE">Ramiro Aguilar</candidato>
-      <candidato id="104" usuario="presi" clave="presi4" lista= "35 ALIANZA PAIS">Lenin Moreno</candidato>
-      <candidato id="104" usuario="vice" clave="vice4" lista= "35 ALIANZA PAIS">Jorge Glas</candidato>
-      <candidato id="105" usuario="conc" clave="conc1" lista= "6 PSC">Luis Fernandez</candidato>
-      <candidato id="105" usuario="conc" clave="conc2" lista= "21 - 23 CREO - SUMA">Moises Reyes</candidato>
-      <candidato id="105" usuario="conc" clave="conc3" lista= "10 FE">Ricardo Layana</candidato>
-      <candidato id="105" usuario="conc" clave="conc4" lista= "35 ALIANZA PAIS">Carlos Villacres</candidato>
-      <candidato id="106" usuario="alcalde" clave="alc1" lista= "6 PSC">Alberto Guzmán</candidato>
-      <candidato id="106" usuario="alcalde" clave="alc2" lista= "21 - 23 CREO - SUMA">Viviana Bonilla</candidato>
-      <candidato id="106" usuario="alcalde" clave="alc3" lista= "10 FE">Isabel Cantos</candidato>
-      <candidato id="106" usuario="alcalde" clave="alc4" lista= "35 ALIANZA PAIS">Ney Calderón</candidato>
+      <candidato id="104" usuario="presi" clave="presi1" lista="6 PSC">Cinthya Viteri</candidato>
+      <candidato id="104" usuario="vice" clave="vice1" lista="6 PSC">Mauricio Pozo</candidato>
+      <candidato id="104" usuario="presi" clave="presi2" lista="21 - 23 CREO - SUMA">Guillermo Lasso</candidato>
+      <candidato id="104" usuario="vice" clave="vice2" lista="21 - 23 CREO - SUMA">Andres Paez</candidato>
+      <candidato id="104" usuario="presi" clave="presi3" lista="10 FE">Abdala Bucaram</candidato>
+      <candidato id="104" usuario="vice" clave="vice3" lista="10 FE">Ramiro Aguilar</candidato>
+      <candidato id="104" usuario="presi" clave="presi4" lista="35 ALIANZA PAIS">Lenin Moreno</candidato>
+      <candidato id="104" usuario="vice" clave="vice4" lista="35 ALIANZA PAIS">Jorge Glas</candidato>
+      <candidato id="105" usuario="conc" clave="conc1" lista="6 PSC">Luis Fernandez</candidato>
+      <candidato id="105" usuario="conc" clave="conc2" lista="21 - 23 CREO - SUMA">Moises Reyes</candidato>
+      <candidato id="105" usuario="conc" clave="conc3" lista="10 FE">Ricardo Layana</candidato>
+      <candidato id="105" usuario="conc" clave="conc4" lista="35 ALIANZA PAIS">Carlos Villacres</candidato>
+      <candidato id="106" usuario="alcalde" clave="alc1" lista="6 PSC">Alberto Guzmán</candidato>
+      <candidato id="106" usuario="alcalde" clave="alc2" lista="21 - 23 CREO - SUMA">Viviana Bonilla</candidato>
+      <candidato id="106" usuario="alcalde" clave="alc3" lista="10 FE">Isabel Cantos</candidato>
+      <candidato id="106" usuario="alcalde" clave="alc4" lista="35 ALIANZA PAIS">Ney Calderón</candidato>
     </candidatos>
     <votantes>
-      <votante id="0922009774" estado= "no">Rosa Chamba</votante>
-      <votante id="0904085453" estado= "no">Galo Celleri</votante>
-      <votante id="0921505061" estado= "no">Olga Tohabanda</votante>
-      <votante id="0912567842" estado= "no">César Recalde</votante>
-      <votante id="0953891234" estado= "no">Andrea Gálvez</votante>
-      <votante id="1300234511" estado= "no">Claudia Ruiz</votante>
-      <votante id="0923568974" estado= "no">Alvaro Lucas</votante>
-      <votante id="0922451078" estado= "no">José Márquez</votante>
-      <votante id="1123560097" estado= "no">Caleb Muñoz</votante>
-      <votante id="0933987520" estado= "no">Francisco León</votante>
+      <votante id="0922009774" estado="si">Rosa Chamba</votante>
+      <votante id="0904085453" estado="no">Galo Celleri</votante>
+      <votante id="0921505061" estado="no">Olga Tohabanda</votante>
+      <votante id="0912567842" estado="no">César Recalde</votante>
+      <votante id="0953891234" estado="no">Andrea Gálvez</votante>
+      <votante id="1300234511" estado="no">Claudia Ruiz</votante>
+      <votante id="0923568974" estado="no">Alvaro Lucas</votante>
+      <votante id="0922451078" estado="no">José Márquez</votante>
+      <votante id="1123560097" estado="no">Caleb Muñoz</votante>
+      <votante id="0933987520" estado="no">Francisco León</votante>
     </votantes>
   </usuarios>
   <dignidades>
-      <dignidad id="104" nombre= "Binomio: Presidente y Vicepresidente">
-           <lista6>0</lista6>
-           <lista21-23>0</lista21-23>
-           <lista10>0</lista10>
-           <lista35>0</lista35>
-           <nulo>0</nulo>
-           <blanco>0</blanco>
-      </dignidad>
-      <dignidad id="105" nombre= "Concejal">
-            <lista6>0</lista6>
-           <lista21-23>0</lista21-23>
-           <lista10>0</lista10>
-           <lista35>0</lista35>
-           <nulo>0</nulo>
-           <blanco>0</blanco>
-      </dignidad>
-      <dignidad id="106" nombre= "Alcalde">
-            <lista6>0</lista6>
-           <lista21-23>0</lista21-23>
-           <lista10>0</lista10>
-           <lista35>0</lista35>
-           <nulo>0</nulo>
-           <blanco>0</blanco>
-      </dignidad>
+    <dignidad id="104" nombre="Binomio: Presidente y Vicepresidente">
+      <lista6>1</lista6>
+      <lista21-23>1</lista21-23>
+      <lista10>0</lista10>
+      <lista35>0</lista35>
+      <nulo>0</nulo>
+      <blanco>0</blanco>
+    </dignidad>
+    <dignidad id="105" nombre="Concejal">
+      <lista6>1</lista6>
+      <lista21-23>0</lista21-23>
+      <lista10>1</lista10>
+      <lista35>0</lista35>
+      <nulo>0</nulo>
+      <blanco>0</blanco>
+    </dignidad>
+    <dignidad id="106" nombre="Alcalde">
+      <lista6>0</lista6>
+      <lista21-23>0</lista21-23>
+      <lista10>0</lista10>
+      <lista35>1</lista35>
+      <nulo>1</nulo>
+      <blanco>0</blanco>
+    </dignidad>
   </dignidades>
 </sistema>

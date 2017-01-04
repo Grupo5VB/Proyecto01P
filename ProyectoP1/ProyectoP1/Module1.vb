@@ -30,8 +30,10 @@ Module Module1
     Dim votosConcejal As New ArrayList()
     Dim votosAlcalde As New ArrayList()
 
-    Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P16\ProyectoP1\SistVotoElectronico.xml"
-    'Dim ruta = "C:\Users\ESTUDIANTE\Documents\ProyectoVS\ProyectoP1\SistVotoElectronico.xml"
+
+    Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
+    ''Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P16\ProyectoP1\SistVotoElectronico.xml"
+
     Dim xmlDoc As New XmlDocument()
 
 
@@ -55,7 +57,6 @@ Module Module1
         xmlDoc.Load(ruta)
         CargarCandidatos(xmlDoc)
         Console.Title = "SISTEMA VOTO ELECTRONICO"
-        'Console.ForegroundColor = ConsoleColor.Yellow
         Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
         Do
             MenuPrincipal()
@@ -93,7 +94,6 @@ Module Module1
     End Sub
 
     Private Sub CargarCandidatos(xmlDoc As XmlDocument)
-        'Dim codDig, nomDig As String
         Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
         For Each nodo As XmlNode In raiz
             For Each registro As XmlNode In nodo.ChildNodes
@@ -282,7 +282,7 @@ Module Module1
     End Sub
 
     Sub MenuLogVotante(xmlDoc As XmlDocument)
-        Dim cedula As String
+        ''Dim cedula As String
         Console.Clear()
         Console.WriteLine(vbTab & "INICIAR SESION VOTANTE " & vbCrLf)
         Console.Write(" INGRESE SU NÚMERO DE CÉDULA : " & vbTab)

@@ -26,7 +26,7 @@ Module Module1
     Dim votosAlcalde As New ArrayList()
 
 
-    Dim ruta = "C:\Users\Galo\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
+    Dim ruta = "C:\Users\ESTUDIANTE\Source\Repos\Proyecto01P\ProyectoP1\SistVotoElectronico.xml"
     ''Dim ruta = "C:\Users\Olguis\Source\Repos\Proyecto01P16\ProyectoP1\SistVotoElectronico.xml"
 
     Dim xmlDoc As New XmlDocument()
@@ -274,6 +274,11 @@ Module Module1
         Console.WriteLine(vbTab & "INICIAR SESION VOTANTE " & vbCrLf)
         Console.Write(" INGRESE SU NÚMERO DE CÉDULA : " & vbTab)
         cedula = Console.ReadLine()
+        Dim contVotos As Integer = 0
+
+        'Dim hora As System.DateTime = String.Format("{0:G}", DateTime.Now)
+        Dim hora As String = Now.ToString("hh")
+
         Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
         For Each nodo As XmlNode In raiz
             For Each registro As XmlNode In nodo.ChildNodes
@@ -282,17 +287,21 @@ Module Module1
                         If votante.Name = "votante" Then
                             If votante.Attributes(0).Value = cedula Then
                                 If votante.Attributes(1).Value = "no" Then
-                                    MenuCandPresi()
-                                    Exit For
+                                    If hora <= 7 And hora >= 5 Then
+                                        contVotos += 1
+                                        MenuCandPresi()
+                                        Exit For
+                                    Else
+                                        Console.WriteLine("El votante ya sufragó")
+                                        Console.WriteLine(" ")
+                                        Exit For
+                                    End If
                                 Else
-                                    Console.WriteLine("El votante ya sufragó")
+                                    Console.WriteLine("Votantes sufragan por hora" & contVotos)
                                     Console.WriteLine(" ")
-                                    Exit For
+                                    Console.WriteLine("Ingrese un número de cédula válido...")
+                                    ''Exit For
                                 End If
-                            Else
-                                Console.WriteLine(" ")
-                                Console.WriteLine("Ingrese un número de cédula válido...")
-                                ''Exit For
                             End If
                         End If
                     Next

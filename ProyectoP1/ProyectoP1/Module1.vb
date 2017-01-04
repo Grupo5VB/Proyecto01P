@@ -167,11 +167,14 @@ Module Module1
 
             Select Case opcion
                 Case OpMainAdm.Dignidades
-                    Console.WriteLine("ADMINISTRAR DIGNIDADES")
-                    MenuAdmDignidades()
+                    Dim d As New Dignidades
+                    Console.WriteLine("AGREGAR DIGNIDADES")
+                    d.AgregarDignidad(ruta)
+                    MenuPrincipal()
                 Case OpMainAdm.Candidatos
-                    Console.WriteLine("ADMINISTRAR CANDIDATOS")
-                    MenuAdmCandidatos()
+                    Console.WriteLine("AGREGAR CANDIDATOS")
+                    AgregarCandidato(ruta)
+                    MenuPrincipal()
                 Case OpMainAdm.Estadisticas
                     Console.WriteLine("ESTADISTICAS")
                     MenuAdmEstadisticas()
@@ -489,30 +492,31 @@ Module Module1
         xmlDoc.Load(ruta)
     End Sub
 
-    Sub MenuAdmDignidades()
-        Console.Clear()
-        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
-        Console.WriteLine(vbTab & vbTab & "  ADMINISTAR DIGNIDADES" & vbCrLf)
-        Console.WriteLine("OPCIÓN 1. CREAR" & vbCrLf)
-        Console.WriteLine("OPCIÓN 2. MODIFICAR" & vbCrLf)
-        Console.WriteLine("OPCIÓN 3. CONSULTAR" & vbCrLf)
-        Console.WriteLine("OPCIÓN 4. ELIMINAR" & vbCrLf)
-        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
-        opcion = Console.ReadLine()
-        MenuAdministrador()
-    End Sub
 
-    Sub MenuAdmCandidatos()
+    Public Sub AgregarCandidato(ruta As String)
+        Dim xmlDoc As New XmlDocument()
+        xmlDoc.Load(ruta)
+        Dim id, nombre, lista, usuario, contraseña As String
         Console.Clear()
-        Console.WriteLine(vbTab & vbTab & "  SISTEMA VOTO ELECTRÓNICO" & vbCrLf)
-        Console.WriteLine(vbTab & vbTab & "  ADMINISTAR DIGNIDADES" & vbCrLf)
-        Console.WriteLine("OPCIÓN 1. CREAR" & vbCrLf)
-        Console.WriteLine("OPCIÓN 2. MODIFICAR" & vbCrLf)
-        Console.WriteLine("OPCIÓN 3. CONSULTAR" & vbCrLf)
-        Console.WriteLine("OPCIÓN 4. ELIMINAR" & vbCrLf)
-        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
-        opcion = Console.ReadLine()
-        MenuAdministrador()
+        Console.WriteLine("Ingrese el código del candidato: ")
+        id = Console.ReadLine()
+        Console.WriteLine("Ingrese el nombre del candidato: ")
+        nombre = Console.ReadLine()
+        Console.WriteLine("Ingrese la lista a la que pertenece: ")
+        lista = Console.ReadLine()
+        Console.WriteLine("Ingrese el usuario: ")
+        usuario = Console.ReadLine()
+        Console.WriteLine("Ingrese la contraseña: ")
+        contraseña = Console.ReadLine()
+        Dim collection As XmlNode = xmlDoc.GetElementsByTagName("candidatos").Item(0)
+        Dim dig As XmlElement = xmlDoc.CreateElement("candidato")
+        dig.SetAttribute("id", id)
+        dig.SetAttribute("usuario", usuario)
+        dig.SetAttribute("clave", contraseña)
+        dig.SetAttribute("lista", lista)
+        dig.InnerText = nombre
+        collection.AppendChild(dig)
+        xmlDoc.Save(ruta)
     End Sub
 
     Sub MenuAdmEstadisticas()

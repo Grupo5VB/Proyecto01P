@@ -4,13 +4,6 @@ Module Module1
 
     Dim op As String = ""
     Dim opcion As Byte
-    Dim votoDig As Integer
-    Dim votoNulo As Integer
-    Dim votoBlanco As Integer
-    Dim listaPSC As Integer
-    Dim listaFE As Integer
-    Dim listaCREO As Integer
-    Dim listaAlianzaP As Integer
     Const LOGIN As Byte = 1
     Const SINGIN As Byte = 2
     Const CHPASSWORD As Byte = 3
@@ -19,6 +12,8 @@ Module Module1
     Dim cedula As String
     Dim usuarioCand As String
     Dim claveCand As String
+    Dim idCand As String
+
 
     Dim binomios As New ArrayList()
     Dim concejales As New ArrayList()
@@ -206,6 +201,7 @@ Module Module1
                     For Each candidatos As XmlNode In usuarios
                         If candidatos.Name = "candidato" Then
                             If candidatos.Attributes(1).Value = usuarioCand And candidatos.Attributes(2).Value = claveCand Then
+                                idCand = candidatos.Attributes(0).Value
                                 MenuCandidatos()
                             Else
                                 Console.WriteLine("Candidato no registrado")
@@ -227,7 +223,7 @@ Module Module1
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
         opcion = Console.ReadLine()
         If opcion = 1 Then
-            mostrarResulCand(xmlDoc, usuarioCand)
+            mostrarResulCand(xmlDoc)
         Else
             Console.WriteLine(vbTab & vbTab & "Regresando al Menú Principal...")
             Console.ReadLine()
@@ -236,28 +232,17 @@ Module Module1
 
     End Sub
 
-    Sub mostrarResulCand(xmlDoc As XmlDocument, usuarioCand As String)
+    Sub mostrarResulCand(xmlDoc As XmlDocument)
         Console.Clear()
         Dim raiz As XmlNodeList = xmlDoc.GetElementsByTagName("sistema")
         For Each nodo As XmlNode In raiz
             For Each dignidades As XmlNode In nodo.ChildNodes
                 For Each dignidad As XmlNode In dignidades
                     If dignidad.Name = "dignidad" Then
-                        If dignidad.Attributes(0).Value = "104" Then
-                            Console.WriteLine(dignidad.Name & ": " & "Binomio: Presidente y Vicepresidente")
-                            For Each listas As XmlNode In dignidad.ChildNodes
-                                Console.WriteLine(listas.Name & ": " & listas.InnerText)
-                            Next
-
-                        ElseIf dignidad.Attributes(0).Value = "105" Then
-                            Console.WriteLine(dignidad.Name & ": " & "Concejal")
-                            For Each listas As XmlNode In dignidad.ChildNodes
-                                Console.WriteLine(listas.Name & ": " & listas.InnerText)
-                            Next
-                        Else
-                            Console.WriteLine(dignidad.Name & ": " & "Alcalde")
-                            For Each listas As XmlNode In dignidad.ChildNodes
-                                Console.WriteLine(listas.Name & ": " & listas.InnerText)
+                        If dignidad.Attributes(0).Value = idCand Then
+                            Console.WriteLine(dignidad.Name & ": " & dignidad.Attributes(1).Value)
+                            For Each ListDignidades As XmlNode In dignidad.ChildNodes
+                                Console.WriteLine(ListDignidades.Name & ": " & ListDignidades.InnerText)
                             Next
                         End If
                     End If
@@ -278,7 +263,6 @@ Module Module1
         Console.WriteLine(vbTab & vbTab & "{0}. Administrador", CHPASSWORD)
         Console.WriteLine(vbTab & vbTab & "{0}. Salir", OUT)
         Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
-
     End Sub
 
     Sub MenuLogVotante(xmlDoc As XmlDocument)

@@ -25,7 +25,7 @@
       <candidato id="106" usuario="alcalde" clave="alc4" lista="35 ALIANZA PAIS">Ney Calderón</candidato>
     </candidatos>
     <votantes>
-      <votante id="0922009774" estado="si">Rosa Chamba</votante>
+      <votante id="0922009774" estado="no">Rosa Chamba</votante>
       <votante id="0904085453" estado="no">Galo Celleri</votante>
       <votante id="0921505061" estado="no">Olga Tohabanda</votante>
       <votante id="0912567842" estado="no">César Recalde</votante>
@@ -39,17 +39,17 @@
   </usuarios>
   <dignidades>
     <dignidad id="104" nombre="Binomio: Presidente y Vicepresidente">
-      <lista6>1</lista6>
-      <lista21-23>1</lista21-23>
+      <lista6>0</lista6>
+      <lista21-23>0</lista21-23>
       <lista10>0</lista10>
       <lista35>0</lista35>
       <nulo>0</nulo>
       <blanco>0</blanco>
     </dignidad>
     <dignidad id="105" nombre="Concejal">
-      <lista6>1</lista6>
+      <lista6>0</lista6>
       <lista21-23>0</lista21-23>
-      <lista10>1</lista10>
+      <lista10>0</lista10>
       <lista35>0</lista35>
       <nulo>0</nulo>
       <blanco>0</blanco>
@@ -58,8 +58,8 @@
       <lista6>0</lista6>
       <lista21-23>0</lista21-23>
       <lista10>0</lista10>
-      <lista35>1</lista35>
-      <nulo>1</nulo>
+      <lista35>0</lista35>
+      <nulo>0</nulo>
       <blanco>0</blanco>
     </dignidad>
   </dignidades>

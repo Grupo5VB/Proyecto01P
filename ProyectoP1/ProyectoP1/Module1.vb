@@ -417,90 +417,25 @@ Module Module1
         Next
 
         Dim temporal As Integer = 0
-        Dim temporal1 As Integer = 0
-        Dim temporal2 As Integer = 0
 
-        Select Case votoTemp(0)
-            Case 1
-                temporal = CInt(votosBinomio(0))
+        For i As Integer = 1 To 6 Step 1
+            If votoTemp(0) = i Then
+                temporal = CInt(votosBinomio(i - 1))
                 temporal += 1
-                votosBinomio(0) = CStr(temporal)
-                'Console.WriteLine(temporal)
-            Case 2
-                temporal = CInt(votosBinomio(1))
+                votosBinomio(i - 1) = CStr(temporal)
+            End If
+            If votoTemp(1) = i Then
+                temporal = CInt(votosConcejal(i - 1))
                 temporal += 1
-                votosBinomio(1) = CStr(temporal)
-            Case 3
-                temporal = CInt(votosBinomio(2))
+                votosConcejal(i - 1) = CStr(temporal)
+            End If
+            If votoTemp(2) = i Then
+                temporal = CInt(votosAlcalde(i - 1))
                 temporal += 1
-                votosBinomio(2) = CStr(temporal)
-            Case 4
-                temporal = CInt(votosBinomio(3))
-                temporal += 1
-                votosBinomio(3) = CStr(temporal)
-            Case 5
-                temporal = CInt(votosBinomio(4))
-                temporal += 1
-                votosBinomio(4) = CStr(temporal)
-            Case 6
-                temporal = CInt(votosBinomio(5))
-                temporal += 1
-                votosBinomio(5) = CStr(temporal)
-        End Select
+                votosAlcalde(i - 1) = CStr(temporal)
+            End If
+        Next
 
-        Select Case votoTemp(1)
-            Case 1
-                temporal1 = CInt(votosConcejal(0))
-                temporal1 += 1
-                votosConcejal(0) = CStr(temporal1)
-            Case 2
-                temporal1 = CInt(votosConcejal(1))
-                temporal1 += 1
-                votosConcejal(1) = CStr(temporal1)
-            Case 3
-                temporal1 = CInt(votosConcejal(2))
-                temporal1 += 1
-                votosConcejal(2) = CStr(temporal1)
-            Case 4
-                temporal1 = CInt(votosConcejal(3))
-                temporal1 += 1
-                votosConcejal(3) = CStr(temporal1)
-            Case 5
-                temporal1 = CInt(votosConcejal(4))
-                temporal1 += 1
-                votosConcejal(4) = CStr(temporal1)
-            Case 6
-                temporal1 = CInt(votosConcejal(5))
-                temporal1 += 1
-                votosConcejal(5) = CStr(temporal1)
-        End Select
-
-        Select Case votoTemp(2)
-            Case 1
-                temporal2 = CInt(votosAlcalde(0))
-                temporal2 += 1
-                votosAlcalde(0) = CStr(temporal2)
-            Case 2
-                temporal2 = CInt(votosAlcalde(1))
-                temporal2 += 1
-                votosAlcalde(1) = CStr(temporal2)
-            Case 3
-                temporal2 = CInt(votosAlcalde(2))
-                temporal2 += 1
-                votosAlcalde(2) = CStr(temporal2)
-            Case 4
-                temporal2 = CInt(votosAlcalde(3))
-                temporal2 += 1
-                votosAlcalde(3) = CStr(temporal2)
-            Case 5
-                temporal2 = CInt(votosAlcalde(4))
-                temporal2 += 1
-                votosAlcalde(4) = CStr(temporal2)
-            Case 6
-                temporal2 = CInt(votosAlcalde(5))
-                temporal2 += 1
-                votosAlcalde(5) = CStr(temporal2)
-        End Select
         GuardarVotoXml(votosBinomio, votosConcejal, votosAlcalde, xmlDoc)
         Console.WriteLine("Validando su voto....")
         Console.ReadLine()

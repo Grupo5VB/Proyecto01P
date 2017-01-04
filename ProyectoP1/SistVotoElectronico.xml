@@ -28,7 +28,7 @@
       <votante id="0922009774" estado="no">Rosa Chamba</votante>
       <votante id="0904085453" estado="no">Galo Celleri</votante>
       <votante id="0921505061" estado="no">Olga Tohabanda</votante>
-      <votante id="0912567842" estado="no">César Recalde</votante>
+      <votante id="0912567842" estado="si">César Recalde</votante>
       <votante id="0953891234" estado="no">Andrea Gálvez</votante>
       <votante id="1300234511" estado="no">Claudia Ruiz</votante>
       <votante id="0923568974" estado="no">Alvaro Lucas</votante>
@@ -39,7 +39,7 @@
   </usuarios>
   <dignidades>
     <dignidad id="104" nombre="Binomio: Presidente y Vicepresidente">
-      <lista6>0</lista6>
+      <lista6>1</lista6>
       <lista21-23>0</lista21-23>
       <lista10>0</lista10>
       <lista35>0</lista35>
@@ -48,7 +48,7 @@
     </dignidad>
     <dignidad id="105" nombre="Concejal">
       <lista6>0</lista6>
-      <lista21-23>0</lista21-23>
+      <lista21-23>1</lista21-23>
       <lista10>0</lista10>
       <lista35>0</lista35>
       <nulo>0</nulo>
@@ -58,7 +58,7 @@
       <lista6>0</lista6>
       <lista21-23>0</lista21-23>
       <lista10>0</lista10>
-      <lista35>0</lista35>
+      <lista35>1</lista35>
       <nulo>0</nulo>
       <blanco>0</blanco>
     </dignidad>

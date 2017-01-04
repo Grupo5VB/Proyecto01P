@@ -332,8 +332,14 @@ Module Module1
         Next
         Console.WriteLine("OPCIÓN 5. Voto Nulo" & vbCrLf)
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
-        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
-        opcion = Console.ReadLine()
+        Try
+            Do
+                Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+                opcion = Console.ReadLine()
+            Loop While opcion > 6
+        Catch ex As OverflowException
+            Console.WriteLine("La opción no es correcta")
+        End Try
         votoTemp.Add(opcion)
         MenuCandConcejal()
     End Sub
@@ -349,8 +355,14 @@ Module Module1
         Next
         Console.WriteLine("OPCIÓN 5. Voto Nulo" & vbCrLf)
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
-        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
-        opcion = Console.ReadLine()
+        Try
+            Do
+                Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+                opcion = Console.ReadLine()
+            Loop While opcion > 6
+        Catch ex As OverflowException
+            Console.WriteLine("La opción no es correcta")
+        End Try
         votoTemp.Add(opcion)
         MenuCandAlcalde()
 
@@ -369,8 +381,14 @@ Module Module1
         Next
         Console.WriteLine("OPCIÓN 5. Voto Nulo" & vbCrLf)
         Console.WriteLine("OPCIÓN 6. Voto Blanco" & vbCrLf)
-        Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
-        opcion = Console.ReadLine()
+        Try
+            Do
+                Console.Write(vbCrLf & "ESCOGA 1 OPCIÓN : ")
+                opcion = Console.ReadLine()
+            Loop While opcion > 6
+        Catch ex As OverflowException
+            Console.WriteLine("La opción no es correcta")
+        End Try
         votoTemp.Add(opcion)
         Console.WriteLine("Validación de voto:  ")
         Console.WriteLine("Todos los datos son correctos?")
